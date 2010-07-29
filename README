@@ -1,0 +1,2 @@
+#Install
+git submodule add git://github.com/codegram/globalize2_home_page_redirect-radiant-extension.git vendor/extensions/globalize2_home_page_redirect
