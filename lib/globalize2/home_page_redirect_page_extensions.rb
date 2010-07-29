@@ -28,7 +28,7 @@ module Globalize2
     private
     
     def needs_language_detection?
-      Globalize2Extension.redirect_home_page? == true and (not parent?) and request.path == '/'
+      Globalize2Extension.redirect_home_page? and (not parent?) and request.path == '/'
     end
     
     def languages

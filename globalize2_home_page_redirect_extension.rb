@@ -4,7 +4,7 @@ class Globalize2HomePageRedirectExtension < Radiant::Extension
   
   Globalize2Extension.class_eval do
     def self.redirect_home_page?
-      @@redirect_home_page ||= Radiant::Config['globalize.redirect_home_page?'].blank? ? true : Radiant::Config['globalize.redirect_home_page?']
+      @@redirect_home_page ||= Radiant::Config['globalize.redirect_home_page?'] == nil ? true : Radiant::Config['globalize.redirect_home_page?']
     end
   end
 
