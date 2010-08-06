@@ -42,7 +42,7 @@ module Globalize2
     end
 
     def location
-      language = languages.detect{|l| Globalize2Extension.locales.include?(l)} || Globalize2Extension.default_language 
+      language = languages.detect{|l| Globalize2Extension.locales.include?(l)} || Globalize2Extension.fallback_language 
       path = clean_url("#{language}#{request.path}")
       "#{request.protocol}#{request.host_with_port}#{path}" << (request.query_string.blank? ? '' : "?#{request.query_string}")
     end  
