@@ -28,7 +28,11 @@ module Globalize2
     private
     
     def needs_language_detection?
-      Globalize2Extension.redirect_home_page? and (not parent?) and request.path == '/'
+      if (user_accepts_non_default_language? or (!user_accepts_non_default_language? and Globalize2Extension.redirect_home_page_on_default_language?))
+        Globalize2Extension.redirect_home_page? and (not parent?) and request.path == '/'
+      else
+        false
+      end
     end
     
     def languages
@@ -46,5 +50,9 @@ module Globalize2
       path = clean_url("#{language}#{request.path}")
       "#{request.protocol}#{request.host_with_port}#{path}" << (request.query_string.blank? ? '' : "?#{request.query_string}")
     end  
+
+    def user_accepts_non_default_language?
+      languages.any?{|l| Globalize2Extension.languages.include?(l)}
+    end
   end
 end

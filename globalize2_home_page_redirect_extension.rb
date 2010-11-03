@@ -12,6 +12,10 @@ class Globalize2HomePageRedirectExtension < Radiant::Extension
       @@redirect_home_page ||= Radiant::Config['globalize.redirect_home_page?'] == nil ? true : Radiant::Config['globalize.redirect_home_page?']
     end
 
+    def self.redirect_home_page_on_default_language?
+      @@redirect_home_page_on_default_language ||= Radiant::Config['globalize.redirect_home_page_on_default?'] == nil ? true : Radiant::Config['globalize.redirect_home_page_on_default?']
+    end
+
   end
 
   def activate
